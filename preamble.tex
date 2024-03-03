@@ -1,0 +1,28 @@
+\usepackage{ntheorem, amsmath}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[framemethod=tikz]{mdframed}
+
+\let\vec\mathbf{}
+
+\theoremstyle{break}
+\newmdtheoremenv[
+  linecolor=red,
+  roundcorner=5pt,
+]{definition}{Definition}
+
+\theoremstyle{break}
+\newmdtheoremenv[
+  roundcorner=5pt,
+  hidealllines=true,
+  leftline=true,
+  linecolor=gray
+]{theorem}{Theorem}
+
+
+\theoremstyle{break}
+\newmdtheoremenv[
+  roundcorner=5pt,
+  hidealllines=true,
+  leftline=true,
+  linecolor=gray
+]{corollary}{Corollary}[theorem]
