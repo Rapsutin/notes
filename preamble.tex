@@ -1,28 +1,33 @@
-\usepackage{ntheorem, amsmath}
+\usepackage{ntheorem}
 \usepackage{graphicx} % Required for inserting images
 \usepackage[framemethod=tikz]{mdframed}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amsfonts}
 
-\let\vec\mathbf{}
-
-\theoremstyle{break}
-\newmdtheoremenv[
-  linecolor=red,
-  roundcorner=5pt,
-]{definition}{Definition}
+\numberwithin{equation}{subsection}
 
 \theoremstyle{break}
+\theorembodyfont{\upshape}
 \newmdtheoremenv[
   roundcorner=5pt,
-  hidealllines=true,
-  leftline=true,
-  linecolor=gray
-]{theorem}{Theorem}
-
+]{definition}{Definition}[subsection]
 
 \theoremstyle{break}
+\theorembodyfont{\upshape}
 \newmdtheoremenv[
   roundcorner=5pt,
   hidealllines=true,
   leftline=true,
   linecolor=gray
-]{corollary}{Corollary}[theorem]
+]{theorem}[definition]{Theorem}
+
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\newmdtheoremenv[
+  roundcorner=5pt,
+  hidealllines=true,
+  leftline=true,
+  linecolor=gray
+]{corollary}[definition]{Corollary}

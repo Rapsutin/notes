@@ -1,5 +1,6 @@
 \documentclass{article}
 \include{preamble}
+\include{alias}
 
 \title{Science notes 2}
 \author{Juho Lamminmäki }
@@ -9,37 +10,107 @@
 
 \maketitle
 
+\section{Functions}
+\subsection{Vector-valued functions}
+\begin{definition}[Vector-valued function]
+    A real vector-valued function $f: S \subseteq \mathbb{R}^m \rightarrow \mathbb{R}^n$
+    is a rule that assigns to each $\vec{p} \in S$ a unique $f(\vec{p}) \in \mathbb{R}^n$.
+\end{definition}
+\begin{definition}[Coordinate function]
+    A vector-valued function $f: S \subseteq \mathbb{R}^m \rightarrow \mathbb{R}^n$ may be expressed
+    as
+    \begin{equation}
+        f(\vec{p}) = (f_1(\vec{p}), \ldots, f_n(\vec{p}))
+    \end{equation}
+    where $f_i: S \subseteq \mathbb{R}^m \rightarrow \mathbb{R}$ are called coordinate functions of $f$.
+\end{definition}
+\begin{definition}[Curl]
+    Let $F: D \subseteq \mathbb{R}^3 \rightarrow \mathbb{R}^3$ be a differentiable vector field.
+    The vector field $\curl F:  D \subseteq \mathbb{R}^3 \rightarrow \mathbb{R}^3$ is defined
+    \begin{align}
+        \curl F & = \Delta \times F                                                                                             \\
+                & = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right) \times F \\
+                & = \left(\frac{\partial F_3}{\partial y} - \frac{\partial F_2}{\partial z},
+        \frac{\partial F_1}{\partial z} - \frac{\partial F_3}{\partial x},
+        \frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y} \right).
+    \end{align}
+\end{definition}
+
+\section{Calculus}
+\begin{definition}[Limit at infinity of a sequence]
+    The sequence $(a_k)$ of real numbers converges to $a \in \mathbb{R}$
+    if for each $\epsilon > 0$ there corresponds $K \in \mathbb{N}$ such that
+    \begin{math}
+        \abs{a_k - a} < \epsilon \ \text{whenever} \ k > K.
+    \end{math}
+\end{definition}
+\begin{definition}[Cauchy sequence]
+    The sequence $(a_k)$ of real numbers is a Cauchy sequence if to each
+    $\epsilon > 0$ there corresponds $K \in \mathbb{R}$ such that
+    \begin{math}
+        \abs{a_k - a_l} < \epsilon \ \text{whenever} \ k, l > K.
+    \end{math}
+\end{definition}
+\begin{theorem}[Convergence of a Cauchy sequence]
+    A Cauchy sequence is convergent.
+\end{theorem}
+\begin{theorem}[Bolzano-Weierstrass]
+    Every sequence of real numbers in a compact interval $[a, b]$ (a bounded sequence)
+    has a subsequence that converges to a limit in $[a, b]$.
+\end{theorem}
+\begin{theorem}[Intermediate-value theorem]
+    Let $f: [a, b] \subseteq \mathbb{R} \rightarrow \mathbb{R}$ be a continuous function. If $t$ is any point between the points $f(a)$ and $f(b)$
+    then there exists a point $x \in [a, b]$ such that $f(x) = t$.
+\end{theorem}
+
+\section{Geometry}
+\begin{definition}[Parametrization]
+    Let $f: S \subseteq \mathbb{R}^m \rightarrow \mathbb{R}^n$. $f$ is a
+    parametrization of a curve, a surface, or more generally, a manifold $M$
+    defined by an implicit equation, if its coordinate functions are the parametric equations
+    of $M$.
+\end{definition}
+
 \section{Linear algebra}
 
+\subsection{Dimensionality}
+\begin{theorem}[Rank-nullity]
+    Let $L: V \rightarrow W$ be a linear function
+    where $V$ is finite dimensional. Then
+    \begin{equation}
+        \dim \im L + \dim \ker L = \dim V.
+    \end{equation}
+\end{theorem}
+\subsection{Inequalities}
+
+
 \begin{theorem}[Cauchy-Schwarz inequality]
-    For any vectors $\vec{a}, \vec{b}$ in an inner product space \\
-    \begin{math}
-        \langle \vec{a}, \vec{b} \rangle \leq \lVert \vec{a} \rVert \lVert \vec{b} \rVert.
-    \end{math}
+    For any vectors $\vec{a}, \vec{b}$ in an inner product space
+    \begin{equation}
+        \inner{\vec{a}, \vec{b}} \leq \norm{\vec{a}} \norm{\vec{b}}.
+    \end{equation}
 \end{theorem}
 
 \begin{theorem}[Triangle inequality]
-    For any vectors $\vec{a}, \vec{b}$ in an inner product space \\
-    \begin{math}
-        \lVert \vec{a} + \vec{b} \rVert \leq  \lVert \vec{a} \rVert + \lVert \vec{b} \rVert.
-    \end{math}
+    For any vectors $\vec{a}, \vec{b}$ in an inner product space
+    \begin{equation}
+        \norm{\vec{a} + \vec{b}} \leq \norm{\vec{a}} + \norm{\vec{b}}.
+    \end{equation}
 \end{theorem}
 \begin{corollary}
     \begin{enumerate}
-        \item For any vectors $\vec{a}, \vec{b}$ in an inner product space \\
-              \begin{math}
-                  \lvert \lVert \vec{a} \rVert - \lVert \vec{b} \rVert \rvert \leq \lVert \vec{a} - \vec{b} \rVert \leq \lVert \vec{a} \rVert + \lVert \vec{b} \rVert
-              \end{math}
-        \item For any vectors $\vec{a_1}, \ldots, \vec{a_n}$ in an inner product space and scalars $x_1, \ldots, x_n$, \\
-              \begin{math}
-                  \|x_1\vec{a_1} + \cdots + x_n\vec{a_n}\| \leq |x_1| \|\vec{a_1}\| + \cdots + |x_n|\|\vec{a_n}\|
-              \end{math}
-        \item For any $\vec{x} = (x_1, \ldots, x_n)$, \\
-              \begin{math}
-                  \|(x_1, \ldots, x_n)\| \leq |x_1| + \cdots + |x_n|
-              \end{math}
-
-
+        \item For any vectors $\vec{a}, \vec{b}$ in an inner product space
+              \begin{equation}
+                  \abs{\norm{ \vec{a}} - \norm{ \vec{b}}} \leq \norm{\vec{a} - \vec{b}} \leq \norm{\vec{a}} + \norm{ \vec{b}}.
+              \end{equation}
+        \item For any vectors $\vec{a_1}, \ldots, \vec{a_n}$ in an inner product space and scalars $x_1, \ldots, x_n$,
+              \begin{equation}
+                  \norm{x_1\vec{a_1} + \cdots + x_n\vec{a_n}} \leq |x_1| \norm{\vec{a_1}} + \cdots + \abs{x_n}\norm{\vec{a_n}}.
+              \end{equation}
+        \item For any $\vec{x} = (x_1, \ldots, x_n)$,
+              \begin{equation}
+                  \norm{(x_1, \ldots, x_n)} \leq \abs{x_1} + \cdots + \abs{x_n}.
+              \end{equation}
     \end{enumerate}
 \end{corollary}
 
