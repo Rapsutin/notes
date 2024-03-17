@@ -7,49 +7,115 @@
 \date{March 2024}
 
 \begin{document}
-
 \maketitle
 
 \section{Functions}
-\subsection{Vector-valued functions}
 \begin{definition}[Vector-valued function]
-    A real vector-valued function $f: S \subseteq \mathbb{R}^m \rightarrow \mathbb{R}^n$
-    is a rule that assigns to each $\vec{p} \in S$ a unique $f(\vec{p}) \in \mathbb{R}^n$.
+    A real vector-valued function $f: S \subseteq \R^m \rightarrow \R^n$
+    is a rule that assigns to each $\vec{p} \in S$ a unique $f(\vec{p}) \in \R^n$.
 \end{definition}
 \begin{definition}[Coordinate function]
-    A vector-valued function $f: S \subseteq \mathbb{R}^m \rightarrow \mathbb{R}^n$ may be expressed
+    A vector-valued function $f: S \subseteq \R^m \rightarrow \R^n$ may be expressed
     as
-    \begin{equation}
+    \begin{equation*}
         f(\vec{p}) = (f_1(\vec{p}), \ldots, f_n(\vec{p}))
-    \end{equation}
-    where $f_i: S \subseteq \mathbb{R}^m \rightarrow \mathbb{R}$ are called coordinate functions of $f$.
+    \end{equation*}
+    where $f_i: S \subseteq \R^m \rightarrow \R$ are called coordinate functions of $f$.
 \end{definition}
+\begin{definition}[Graph of a function]
+    The graph of a function $f: D \subseteq \R \rightarrow \R^n$ is the subset
+    of $\R^{n+1}$ given by $\{(t, f(t)) : t \in D \} \in \R.$
+\end{definition}
+\subsection{Grad, curl, div}
 \begin{definition}[Curl]
-    Let $F: D \subseteq \mathbb{R}^3 \rightarrow \mathbb{R}^3$ be a differentiable vector field.
-    The vector field $\curl F:  D \subseteq \mathbb{R}^3 \rightarrow \mathbb{R}^3$ is defined
-    \begin{align}
-        \curl F & = \Delta \times F                                                                                             \\
+    Let $F: D \subseteq \R^3 \rightarrow \R^3$ be a differentiable vector field.
+    The vector field $\curl F:  D \subseteq \R^3 \rightarrow \R^3$ is defined
+    \begin{align*}
+        \curl F & = \nabla \times F                                                                                             \\
                 & = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right) \times F \\
                 & = \left(\frac{\partial F_3}{\partial y} - \frac{\partial F_2}{\partial z},
         \frac{\partial F_1}{\partial z} - \frac{\partial F_3}{\partial x},
         \frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y} \right).
-    \end{align}
+    \end{align*}
+\end{definition}
+\begin{definition}[Irrotational field]
+    A vector field $F: D \subseteq \R^3 \rightarrow \R^3$ such that
+    $(\curl F)(\vec{r}) = \vec{0}$ for all $\vec{r} \in D$ is said to be irrotational.
+\end{definition}
+\begin{theorem}
+    Let $f: D \subseteq \R^3 \rightarrow \R^3$ have only continuous
+    second-order partial derivatives. Then $\curl (\grad f) = \vec{0}$ (irrotational).
+\end{theorem}
+
+\begin{definition}
+    Let $F: D \subseteq \R^m \rightarrow \R^m$ be a differentiable vector field.
+    We define the divergence of $F$ to be the scalar field $\divv F: D \subseteq \R \rightarrow \R$
+    given by
+    \begin{equation*}
+        (\divv F)(\vec{p}) = \nabla \cdot F = \frac{\partial F_1}{\partial x_1} + \cdots + \frac{\partial F_m}{\partial x_m}.
+    \end{equation*}
 \end{definition}
 
+\begin{definition}[Laplace operator]
+    For scalar fields
+    \begin{equation*}
+        \nabla^2 f = \frac{\partial^2 f}{\partial x_1^2} + \cdots + \frac{\partial^2 f}{\partial x_m^2}.
+    \end{equation*}
+    For vector fields
+    \begin{equation*}
+        \nabla^2 F = (\nabla^2 F_1, \ldots, \nabla^2 F_m).
+    \end{equation*}
+    Note that $\nabla^2 f = \nabla \cdot \nabla.$
+\end{definition}
+
+\begin{notes}[Del operator]
+    Let $f, g$ be scalar fields and $F, G$ be vector fields and $c \in \R$.
+    \begin{enumerate}
+        \item $(\grad f) = \nabla f$
+        \item $(\curl F) = \nabla \times F$
+        \item $(\divv F) = \nabla \cdot F$
+    \end{enumerate}
+\end{notes}
+
+\begin{theorem}[Del formulas]
+    \begin{enumerate}
+        \item $\nabla (f + g) = \nabla f + \nabla g$
+        \item $\nabla (cf) = c \nabla f$
+        \item $\nabla \times (F + G) = \nabla \times F + \nabla \times$
+        \item $\nabla \times (cF) = c\nabla \times F$
+        \item $\nabla \cdot (F + G) = \nabla \cdot F + \nabla \cdot G$
+        \item $\nabla \cdot (cF) = c(\nabla \cdot F)$
+        \item $\nabla (fg) = \nabla fg + f\nabla g $
+        \item $\nabla \times (fF) = f\nabla \times F + \nabla f \times F$
+        \item $\nabla \cdot (F \times G) = (\nabla \times F) \cdot G - (\nabla \times G) \cdot F$
+        \item $\nabla \times (\nabla f) = 0$
+        \item $\nabla \cdot (\nabla \times F) = 0$
+        \item $\nabla \times (\nabla \times F) = \nabla(\nabla \cdot F) - \nabla^2 F.$
+    \end{enumerate}
+\end{theorem}
+
 \section{Calculus}
+\subsection{Single variable}
 \begin{definition}[Limit at infinity of a sequence]
-    The sequence $(a_k)$ of real numbers converges to $a \in \mathbb{R}$
+    The sequence $(a_k)$ of real numbers converges to $a \in \R$
     if for each $\epsilon > 0$ there corresponds $K \in \mathbb{N}$ such that
-    \begin{math}
+    \begin{equation*}
         \abs{a_k - a} < \epsilon \ \text{whenever} \ k > K.
-    \end{math}
+    \end{equation*}
 \end{definition}
 \begin{definition}[Cauchy sequence]
     The sequence $(a_k)$ of real numbers is a Cauchy sequence if to each
-    $\epsilon > 0$ there corresponds $K \in \mathbb{R}$ such that
-    \begin{math}
+    $\epsilon > 0$ there corresponds $K \in \R$ such that
+    \begin{equation*}
         \abs{a_k - a_l} < \epsilon \ \text{whenever} \ k, l > K.
-    \end{math}
+    \end{equation*}
+\end{definition}
+\begin{definition}[Continuous function]
+    A function $f: D \subseteq \R \rightarrow \R$ is continuous at some point $c$ if
+    \begin{equation*}
+        \lim_{x \rightarrow c} f(x) = f(c).
+    \end{equation*}
+    If this is true for all $c \in D$, then we call the function continuous.
 \end{definition}
 \begin{theorem}[Convergence of a Cauchy sequence]
     A Cauchy sequence is convergent.
@@ -59,16 +125,197 @@
     has a subsequence that converges to a limit in $[a, b]$.
 \end{theorem}
 \begin{theorem}[Intermediate-value theorem]
-    Let $f: [a, b] \subseteq \mathbb{R} \rightarrow \mathbb{R}$ be a continuous function. If $t$ is any point between the points $f(a)$ and $f(b)$
+    Let $f: [a, b] \subseteq \R \rightarrow \R$ be a continuous function. If $t$ is any point between the points $f(a)$ and $f(b)$
     then there exists a point $x \in [a, b]$ such that $f(x) = t$.
 \end{theorem}
+\begin{theorem}[Mean-value theorem]
+    Let $p$ and $h > 0$ be real numbers, and suppose that $f: [p, p + h] \rightarrow \R$
+    is a real-valued function such that (a) $f$ is continuous on $[p, p + h]$, and (b) $f$ is differentiable
+    at every point of the open interval $(p, p + h)$. Then there exists a point $c$ in the open interval
+    $(p, p + h)$ such that
+    \begin{equation*}
+        f(p + h) = f(p) + hf'(c).
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Taylor's theorem]
+    Let $f: D \subseteq \R \rightarrow \R$ be a real-valued function on an open interval $D$
+    in $\R$, and suppose that $f$ is $n$ times differentiable at every point of $D$. If $p$ and $p + h$ are
+    points of $D$, then there exists in $D$ a point $c = p + \theta h,\ 0 < \theta < 1$, such that
+    \begin{equation*}
+        f(p + h) = f(p) + hf'(p) + \frac{h^2}{2!}f''(p) + \cdots + \frac{h^{n-1}}{(n-1)!}f^{(n-1)}(p) + \frac{h^n}{n!}f^{(n)}(c).
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Integral mean-value theorem]
+    If $f: [a, b] \rightarrow \R$ is continuous then there exists $\xi \in (a, b)$ such that
+    \begin{equation*}
+        \int_{a}^{b} f(x) \, dx\ = (b-a)f(\xi)
+    \end{equation*}
+\end{theorem}
+\begin{definition}[Uniformly continuous function]
+    A function $f: D \subseteq \R \rightarrow \R$ is uniformly continuous on $D$ if to each $\epsilon > 0$
+    there corresponds $\delta > 0$ (depending only on $\epsilon$) such that
+    \begin{equation*}
+        \abs{f(t) - f(s)} < \epsilon \quad \textnormal{whenever} \quad \abs{t - s} < \delta, \quad t,s \in D.
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}
+    A function $f: [a, b] \subseteq \R \rightarrow \R$ which is continuous on
+    $[a, b]$ is uniformly continuous on $[a, b]$.
+\end{theorem}
+
+\begin{theorem}
+    Let $g: [c, d] \subseteq \R \rightarrow \R$ be a bounded function and suppose that
+    $m \leq g(y) \leq M$ for all $y \in [c, d]$ for all $y \in [c, d]$. If $g$ is integrable over
+    $[c, d]$, then
+    \begin{equation*}
+        m(d - c) \leq \int_{c}^{d} g(y) \, dx\ \leq M(d - c).
+    \end{equation*}
+\end{theorem}
+
+\subsection{Multivariate}
+\begin{definition}[Limit at infinity of a sequence]
+    A sequence $(\vec{a}_k)$ in $\R^n$ is said to converge to $\vec{a} \in \R^n$
+    if $\lim_{k \rightarrow \infty} \norm{\vec{a}_k - \vec{a}} = 0$ in $\R$.
+    Equivalently, the sequence $(\vec{a}_k)$ converges to $\vec{a}$ if and only if to
+    each $\epsilon > 0$ there corresponds a natural number $K$ such that
+    \begin{equation*}
+        \norm{\vec{a}_k - \vec{a}} < \epsilon \quad \textnormal{whenever} \quad k > K.
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}
+    A sequence in $\R^n$, $(\vec{a}_k) = (a_{k1}, \ldots, a_{kn})$, converges to $\vec{a} = (a_1, \ldots, a_n)$ if and only if
+    $a_{ki} \rightarrow a_i$ for each $i = 1,\ldots,n$.
+\end{theorem}
+
+\begin{definition}[Continuous function]
+    The function $f: S \subseteq \R^m \rightarrow \R^n$
+    is continuous at $\vec{p} \in S$ if, for any sequence
+    $(\vec{a}_k)$ in $S$, $f(\vec{a}_k) \rightarrow \vec{p}$ whenever
+    $(\vec{a}_k) \rightarrow \vec{p}$. The function $f$ is continuous
+    if and only if it is continuous at every point of $S$.
+\end{definition}
+
+\begin{theorem}
+    The function $f: S \subseteq \R^m \rightarrow \R^n$
+    is continuous at $\vec{p}$ if and only if for each $i=1, \ldots, n$ the coordinate function
+    $f_i: S \subseteq \R^m \rightarrow \R$ is continuous at $\vec{p}$.
+\end{theorem}
+
+\begin{corollary}
+    Let $D$ be an open subset of $\R^m$. A function $f: D \subseteq \R^m \rightarrow \R$
+    is continuously differentiable if and only if $\nabla f$ is continuous.
+\end{corollary}
+
+\begin{corollary}
+    Any linear function $f: \R^m \rightarrow \R^n$ is continuous.
+\end{corollary}
+
+\begin{definition}[Limit]
+    Given a cluster point $\vec{p}$ of $S \subseteq \R^m$, a point $\vec{q}$ of $\R^n$,
+    and a function ${f: S \subseteq \R^m \rightarrow \R^n}$, we write
+    ${\lim_{\vec{x} \rightarrow \vec{p}} f(\vec{x})} = \vec{q}$
+    if $f(\vec{a}_k) \rightarrow \vec{q}$ whenever $\vec{a}_k \rightarrow \vec{p}$ where the sequence
+    $(\vec{a}_k)$ lies in $S$ and $\vec{a}_k \neq \vec{p}$ for all $k \in \mathbb{N}$.
+\end{definition}
+
+\begin{theorem}
+    Given a function ${f: S \subseteq \R^m \rightarrow \R^n}$ and $\vec{p}$, a cluster point of $S$,
+    then $\lim_{\vec{x} \rightarrow \vec{p}} f(\vec{x}) = \vec{q}$ if and only if to each $\epsilon > 0$ there corresponds
+    $\delta > 0$ such that $\norm{f(\vec{x}) - \vec{q}} < \epsilon$ whenever $\vec{x} \in S$ and
+    $0 < \norm{\vec{x} - \vec{p}} < \delta$.
+\end{theorem}
+
+\begin{theorem}
+    The function ${f: S \subseteq \R^m \rightarrow \R^n}$ is continuous at $\vec{p} \in S$
+    if and only if  $\lim_{\vec{x} \rightarrow \vec{p}} f(\vec{x}) = f(\vec{p})$.
+\end{theorem}
+
+\begin{theorem}
+    The function ${f: S \subseteq \R^m \rightarrow \R^n}$ is continuous at $\vec{p} \in S$
+    if and only if to each $\epsilon > 0$ there corresponds $\delta > 0$ such that $f(\vec{x}) \in N(f(\vec{p}), \epsilon)$
+    whenever $\vec{x} \in N(\vec{p}, \delta)$.
+\end{theorem}
+
+\begin{theorem}
+    A function ${f: D \subseteq \R^m \rightarrow \R^n}$, where $D$ is an
+    open subset of $\R^m$, is continuous if and only if for each open subset $V$
+    of $\R^n$ the inverse image
+    \begin{equation*}
+        f^{-1}(V) = \{\vec{x} \in \R^m : \vec{x} \in D, f(\vec{x}) \in V\}
+    \end{equation*}
+    is open in $\R^m$.
+\end{theorem}
+
+\begin{theorem}
+    A function ${f: S \subseteq \R^m \rightarrow \R^n}$ is uniformly continuous
+    on $S$ if to each $\epsilon > 0$ there corresponds $\delta > 0$ such that, for all
+    $\vec{x}, \vec{y} \in S$,
+    \begin{equation*}
+        \norm{f(\vec{x}) - f(\vec{y})} < \epsilon \quad \textnormal{whenever} \quad \norm{\vec{x} - \vec{y}} < \delta.
+    \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+    Let $f: K \subseteq \R^m \rightarrow \R^n$ be a continuous function
+    on a compact domain $K$. Then
+    \begin{enumerate}
+        \item $f$ is uniformly continuous on $K$.
+        \item The image $f(K)$ is compact in $\R^n$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Let $f: K \subseteq \R^m \rightarrow \R^n$ be a 1-1 continuous
+    function defined on a compact domain $K$. Then the inverse function
+    $f^{-1}: f(K) \subseteq \R^n \rightarrow \R^m$ is continuous.
+\end{theorem}
+
+\begin{definition}
+    Given a function $f: D \subseteq \R^m \rightarrow \R^n$,
+    where $D$ is an open subset of $\R^m$, and a point $\vec{p} \in D$,
+    the difference function $\delta_{f, \vec{p}} : D_{\vec{p}} \subseteq \R^m \rightarrow \R^n$
+    is defined by
+    \begin{equation*}
+        \delta_{f, \vec{p}}
+    \end{equation*}
+\end{definition}
 
 \section{Geometry}
 \begin{definition}[Parametrization]
-    Let $f: S \subseteq \mathbb{R}^m \rightarrow \mathbb{R}^n$. $f$ is a
+    Let $f: S \subseteq \R^m \rightarrow \R^n$. $f$ is a
     parametrization of a curve, a surface, or more generally, a manifold $M$
     defined by an implicit equation, if its coordinate functions are the parametric equations
     of $M$.
+\end{definition}
+
+\section{Topology}
+\begin{definition}[Cluster point]
+    Let $S$ be a subset of $\R^m$. A point $\vec{c}$ is
+    called a cluster point (or a limit point) of $S$ if there is a
+    sequence of points $(\vec{x}_k)$ in $S$ such that $\vec{x}_k \neq \vec{c}$ for
+    all $k \in \mathbb{N}$, but $\vec{x}_k \rightarrow \vec{c}$.
+\end{definition}
+
+\begin{definition}[Neighbourhood of a point]
+    If $X$ is a topological space and $p$ is a point in $X$,
+    then a neighbourhood of $p$ is a subset $V$ of $X$ that
+    includes an open set $U$ containing $p$,
+    \begin{equation*}
+        p \in U \subseteq V \subseteq X.
+    \end{equation*}
+    This is equivalent to the point $p \in X$ beloning to the
+    interior of $V$ in $X$.
+\end{definition}
+
+\begin{definition}[Bounded subset]
+    A subset $S \subseteq \R^m$ is bounded if it is contained in a closed
+    ball $B(\vec{p} \in \R^m, k), k > 0$.
+\end{definition}
+
+\begin{definition}[Compact subset]
+    A subset $S \subseteq \R^m$ is compact if it is closed and bounded in $\R^m$.
 \end{definition}
 
 \section{Linear algebra}

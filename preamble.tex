@@ -7,12 +7,26 @@
 
 \numberwithin{equation}{subsection}
 
+\theoremprework{\begin{minipage}{\textwidth}}
+    \theorempostwork{\end{minipage}}
+
 \theoremstyle{break}
 \theorembodyfont{\upshape}
 \newmdtheoremenv[
   roundcorner=5pt,
 ]{definition}{Definition}[subsection]
 
+\theoremprework{\begin{minipage}{\textwidth}}
+    \theorempostwork{\end{minipage}}
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+\newmdtheoremenv[
+  roundcorner=5pt,
+  linecolor=lightgray,
+]{notes}[definition]{Notes}
+
+\theoremprework{\begin{minipage}{\textwidth}}
+    \theorempostwork{\end{minipage}}
 \theoremstyle{break}
 \theorembodyfont{\upshape}
 \newmdtheoremenv[
@@ -22,7 +36,8 @@
   linecolor=gray
 ]{theorem}[definition]{Theorem}
 
-
+\theoremprework{\begin{minipage}{\textwidth}}
+    \theorempostwork{\end{minipage}}
 \theoremstyle{break}
 \theorembodyfont{\upshape}
 \newmdtheoremenv[
