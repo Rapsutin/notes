@@ -173,6 +173,65 @@
     \end{equation*}
 \end{theorem}
 
+\begin{definition}[Riemann sum]
+    Let ${f: [a, b] \subseteq \R \rightarrow \R}$ be a bounded function
+    and let ${P = (x_0, x_1, \ldots, x_n)}$ be a partition of $[a, b]$ such that
+    ${a = x_0 < x_1 < \cdots < x_n = b}$. The Riemann sum of $f$ and $P$ is defined
+    as
+    \begin{equation*}
+        R(f, P) = \sum_{i=1}^k f(p_i)(x_i - x_{i-1})
+    \end{equation*}
+    where $p_i$ is any point in $[x_{i-1}, x_i]$.
+
+    The lower and upper Darboux sums are two special cases of the Riemann sum.
+    The lower Darboux sum $L(f, P)$ is defined
+    \begin{equation*}
+        L(f, P) = \sum_{i=1}^k \inf_{t \in [x_{i-1}, x_i]} f(t)(x_i - x_{i-1})
+    \end{equation*}
+    and the upper Darboux sum $U(f, P)$ is defined
+    \begin{equation*}
+        U(f, P) = \sum_{i=1}^k \sup_{t \in [x_{i-1}, x_i]} f(t)(x_i - x_{i-1}).
+    \end{equation*}
+
+    In addition, we denote
+    \begin{equation*}
+        L(f) = \sup_{P} L(f, P)
+    \end{equation*}
+    and
+    \begin{equation*}
+        U(f) = \inf_{P} U(f, P).
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}
+    Let ${f: [a, b] \subseteq \R \rightarrow \R}$ be a bounded function.
+    For any partitions $P$ and $Q$ of $[a, b]$, it holds that
+    $L(f, P) \leq U(f, Q)$.
+\end{theorem}
+
+\begin{corollary}
+    For all bounded functions ${f: [a, b] \subseteq \R \rightarrow \R}$
+    and any partitions $P$ and $Q$ it holds that
+    \begin{equation*}
+        L(f, P) \leq L(f) \leq U(f) \leq U(f, Q).
+    \end{equation*}
+\end{corollary}
+
+\begin{definition}[Riemann integrable function]
+    The function ${f: [a, b] \subseteq \R \rightarrow \R}$ is said to be
+    Riemann integrable over $[a, b]$ if $L(f) = U(f)$.
+\end{definition}
+
+\begin{theorem}
+    The function ${f: [a, b] \subseteq \R \rightarrow \R}$ is integrable over
+    $[a, b]$ if and only if to each $\epsilon > 0$ there corresponds
+    partitions $P$ and $Q$ such that
+    \begin{equation*}
+        U(f, P) - L(f, Q) < \epsilon.
+    \end{equation*}
+\end{theorem}
+
+
 \subsection{Multivariate}
 \begin{definition}[Limit at infinity of a sequence]
     A sequence $(\vec{a}_k)$ in $\R^n$ is said to converge to $\vec{a} \in \R^n$
@@ -282,6 +341,15 @@
     \end{equation*}
 \end{definition}
 
+\begin{definition}[Path (line) integral]
+    For some scalar field $f: U \subseteq \R^n \rightarrow \R$,
+    the path integral along a (piecewise) $C^1$ path $\alpha: [a, b] \subseteq \R \rightarrow \R^n$
+    whose image is contained in $U$ is defined as
+    \begin{equation*}
+        \int_{C} f \, ds\ =\int_{a}^{b} f(\alpha(t))\norm{\alpha'(t)} \, dt\
+    \end{equation*}
+\end{definition}
+
 \section{Geometry}
 \begin{definition}[Parametrization]
     Let $f: S \subseteq \R^m \rightarrow \R^n$. $f$ is a
@@ -316,6 +384,29 @@
 
 \begin{definition}[Compact subset]
     A subset $S \subseteq \R^m$ is compact if it is closed and bounded in $\R^m$.
+\end{definition}
+
+\begin{definition}[Curve]
+    A subset $C$ of $\R^n$ is a curve if there is a $C^1$ function
+    $f: D \subseteq \R \rightarrow \R^n$, where $D$ is an interval, such that
+    $f(D) = C$. The function $f$ is called a $C^1$ parametrization of the curve.
+\end{definition}
+
+\begin{definition}[Smooth function]
+    A function $f: D \subseteq \R \rightarrow \R^n$ is said to be smooth if it is
+    $C^1$ and if $f'(t) \neq \vec{0}$ for all $t \in D$.
+\end{definition}
+
+\begin{definition}[Simple arc]
+    A curve $C$ in $\R^n$ is a (smooth) simple arc if $C$ has a 1-1
+    (smooth) $C^1$ parametrization of the form $f: [a, b] \subseteq \R \rightarrow \R^n$.
+    The points $f(a)$ and $f(b)$ are then called the end points of the arc.
+    The function $f$ is called a simple parametrization of $C$.
+\end{definition}
+
+\begin{definition}[Path]
+    A continuous function $f: [a, b] \in \R \rightarrow \R^n$ is called a
+    path in $\R^n$ from $f(a)$ to $f(b)$.
 \end{definition}
 
 \section{Linear algebra}
