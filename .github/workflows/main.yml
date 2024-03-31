@@ -15,3 +15,8 @@ jobs:
         with:
           name: PDF
           path: main.pdf
+      - name: Publish PDF
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: Current
+          files: main.pdf
