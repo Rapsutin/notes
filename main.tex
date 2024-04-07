@@ -337,10 +337,42 @@
     the difference function $\delta_{f, \vec{p}} : D_{\vec{p}} \subseteq \R^m \rightarrow \R^n$
     is defined by
     \begin{equation*}
-        \delta_{f, \vec{p}}
+        \delta_{f, \vec{p}}(\vec{h}) = f(\vec{p} + \vec{h}) - f(\vec{p}).
     \end{equation*}
 \end{definition}
 
+\begin{definition}
+    Let $g: N \subseteq \R^m \rightarrow \R^n$ and $g^*: M \subseteq \R^m \rightarrow \R^n$ be
+    two functions whose open domains both contain $\vec{0}$. We will say that $g$ and $g*$
+    closely approximate each other near $\vec{0}$ if there is a function
+    $\eta: N \cap M \subseteq \R^m \rightarrow \R^n$ such that
+    \begin{enumerate}
+        \item $g(\vec{h}) - g^*(\vec{h}) = \norm{\vec{h}}\eta(\vec{h})$
+        \item $\eta(\vec{h}) \rightarrow \vec{0}$ when $\vec{h} \rightarrow \vec{0}$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    A function $f: D \subseteq \R^m \rightarrow \R^n$, defined on an open subset $D$
+    of $\R^m$, is differentiable at $\vec{p} \in D$ if the difference function
+    $\delta_{f, \vec{p}} : D_{\vec{p}} \subseteq \R^m \rightarrow \R^n$ can be closely
+    approximated by a linear function $L: \R^m \rightarrow \R^n$ near $\vec{0}$. The function
+    is said to be differentiable if it is differentiable everywhere in $D$.
+\end{definition}
+
+\begin{theorem}
+    A function $f: D \subseteq \R^m \rightarrow \R^n$ is differentiable
+    at $\vec{p}$ if and only if there is a linear function $L: \R^m \rightarrow \R^n$
+    and a function $\eta D_{\vec{p}} \subseteq \R^m \rightarrow \R^n$ such that
+    \begin{equation*}
+        f(\vec{p} + \vec{h}) - f(\vec{p}) = L(\vec{h}) + \norm{\vec{h}}\eta{\vec{h}}.
+    \end{equation*}
+    and
+    \begin{equation*}
+        \lim_{\vec{h} \rightarrow \vec{0}} \eta(\vec{h}) = \vec{0}
+    \end{equation*}
+\end{theorem}
+\subsection{Line integrals}
 \begin{definition}[Path (line) integral]
     For some scalar field $f: U \subseteq \R^n \rightarrow \R$,
     the path integral along a (piecewise) $C^1$ path $\alpha: [a, b] \subseteq \R \rightarrow \R^n$
